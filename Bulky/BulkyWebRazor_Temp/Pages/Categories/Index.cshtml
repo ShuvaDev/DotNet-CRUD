@@ -1,0 +1,57 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.IndexModel
+
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+<div class="container">
+    <div class="row pt-4 pb-4">
+        <div class="col-6">
+            <h2 class="text-primary">Category List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-page="/categories/create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>Create New Category
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Category Name
+                </th>
+                <th>
+                    Display Order
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.categoryList)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>@category.DisplayOrder</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-page="/categories/Edit" asp-route-categoryId="@category.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-page="/categories/Delete" asp-route-categoryId="@category.Id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
