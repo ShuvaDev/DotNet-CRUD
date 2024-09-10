@@ -1,0 +1,51 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+@if(TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+    <script src="~/js/product.js"></script>
+}
+<div class="conteainer">
+    <div class="row pt-4 pb-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>Create New Product
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    Product Title
+                </th>
+                <th>
+                    ISBN
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Category
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/product.js"></script>
+}

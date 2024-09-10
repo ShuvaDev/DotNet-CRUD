@@ -1,0 +1,50 @@
+﻿@model Company
+
+
+<form method="post" asp-antiforgery="true" asp-controller="Company" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Company</h2>
+        </div>
+        <input type="hidden" asp-for="Id"/>
+        <div class="mb-3 row">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="StreetAddress"></label>
+            <input class="form-control" asp-for="StreetAddress" />
+            <span asp-validation-for="StreetAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="City"></label>
+            <input class="form-control" asp-for="City" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="State"></label>
+            <input class="form-control" asp-for="State" />
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="PhoneNumber"></label>
+            <input class="form-control" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Update</button>
+        </div>
+        <div class="col-6 col-md-3">
+            <a asp-controller="Company" asp-action="Index" class="btn btn-outline-secondary form-control">Back To List</a>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
